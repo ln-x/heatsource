@@ -268,6 +268,7 @@ def GetSolarFlux(hour, JD, Altitude, Zenith, glorad, d_w, W_b, Elevation, TopoFa
     #    Cloud=0
     #else : 
     #    Cloud = 1-ratio_glopot_act
+
     # BOKU: Computation of dependency of elevation on the Glorad
     Elevation_Climate=317
     DeltaE=Elevation-Elevation_Climate
@@ -470,7 +471,7 @@ def GetSolarFlux(hour, JD, Altitude, Zenith, glorad, d_w, W_b, Elevation, TopoFa
     F_Solar[8] = F_Diffuse[8] + F_Direct[8]
 #    return cloud, F_Solar, Solar_blocked_byVeg
 
-    #print ("Cloud1=", Cloud)
+    #print ("Cloud=", Cloud)
     return Cloud, F_Solar, Solar_blocked_byVeg
 
 def GetGroundFluxes(Cloud, Wind, Humidity, T_Air, Elevation, phi, VHeight, ViewToSky, SedDepth, dx,
