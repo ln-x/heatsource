@@ -1,10 +1,12 @@
 Traceback (most recent call last):
-  File "/usr/local/lib/python2.7/dist-packages/heatsource900/BigRedButton.py", line 225, in RunHS
-    HSP = ModelControl(inputdir, control_file)
-  File "/usr/local/lib/python2.7/dist-packages/heatsource900/BigRedButton.py", line 68, in __init__
-    self.HS = CSVInterface(inputdir, control_file, self.ErrLog, run_type)
-  File "/usr/local/lib/python2.7/dist-packages/heatsource900/CSV/CSVInterface.py", line 66, in __init__
-    self.GetContinuousData()
-  File "/usr/local/lib/python2.7/dist-packages/heatsource900/CSV/CSVInterface.py", line 578, in GetContinuousData
-    else: raise Exception("Cloudiness (value of '%s' in Continuous Data) must be greater than zero and less than one." % `cloud`) # TODO RM fix this so it gives the km in exception - actualy do for all
-Exception: Cloudiness (value of '1.9012035' in Continuous Data) must be greater than zero and less than one.
+  File "/usr/local/lib/python2.7/dist-packages/heatsource900/BigRedButton.py", line 226, in RunHS
+    HSP.Run()
+  File "/usr/local/lib/python2.7/dist-packages/heatsource900/BigRedButton.py", line 163, in Run
+    self.Output(time, hour)
+  File "/usr/local/lib/python2.7/dist-packages/heatsource900/Utils/Output.py", line 175, in __call__
+    self.write(self.run_type < 2, timestamp)
+  File "/usr/local/lib/python2.7/dist-packages/heatsource900/Utils/Output.py", line 188, in write
+    self.daily(timestamp)
+  File "/usr/local/lib/python2.7/dist-packages/heatsource900/Utils/Output.py", line 180, in daily
+    self.data["Shade"][timestamp] = [((x.F_DailySum[1] - x.F_DailySum[4]) / x.F_DailySum[1]) for x in nodes]
+ZeroDivisionError: division by zero
