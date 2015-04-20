@@ -1,0 +1,24 @@
+Traceback (most recent call last):
+  File "/usr/local/lib/python2.7/dist-packages/heatsource900/BigRedButton.py", line 225, in RunHS
+    HSP = ModelControl(inputdir, control_file)
+  File "/usr/local/lib/python2.7/dist-packages/heatsource900/BigRedButton.py", line 68, in __init__
+    self.HS = CSVInterface(inputdir, control_file, self.ErrLog, run_type)
+  File "/usr/local/lib/python2.7/dist-packages/heatsource900/CSV/CSVInterface.py", line 64, in __init__
+    else: self.BuildZonesNormal()
+  File "/usr/local/lib/python2.7/dist-packages/heatsource900/CSV/CSVInterface.py", line 822, in BuildZonesNormal
+    LCcodes = self.GetLandCoverCodes() # Pull the LULC codes
+  File "/usr/local/lib/python2.7/dist-packages/heatsource900/CSV/CSVInterface.py", line 1151, in GetLandCoverCodes
+    data = pd.read_csv(join(IniParams["inputdir"],IniParams["lccodefile"]),quotechar='"')
+  File "/usr/local/lib/python2.7/dist-packages/pandas-0.14.0-py2.7-linux-x86_64.egg/pandas/io/parsers.py", line 443, in parser_f
+    return _read(filepath_or_buffer, kwds)
+  File "/usr/local/lib/python2.7/dist-packages/pandas-0.14.0-py2.7-linux-x86_64.egg/pandas/io/parsers.py", line 228, in _read
+    parser = TextFileReader(filepath_or_buffer, **kwds)
+  File "/usr/local/lib/python2.7/dist-packages/pandas-0.14.0-py2.7-linux-x86_64.egg/pandas/io/parsers.py", line 533, in __init__
+    self._make_engine(self.engine)
+  File "/usr/local/lib/python2.7/dist-packages/pandas-0.14.0-py2.7-linux-x86_64.egg/pandas/io/parsers.py", line 670, in _make_engine
+    self._engine = CParserWrapper(self.f, **self.options)
+  File "/usr/local/lib/python2.7/dist-packages/pandas-0.14.0-py2.7-linux-x86_64.egg/pandas/io/parsers.py", line 1032, in __init__
+    self._reader = _parser.TextReader(src, **kwds)
+  File "parser.pyx", line 330, in pandas.parser.TextReader.__cinit__ (pandas/parser.c:2966)
+  File "parser.pyx", line 557, in pandas.parser.TextReader._setup_parser_source (pandas/parser.c:5328)
+IOError: File /home/lnx/PycharmProjects/HS/088_P50_V100_2013/inputfiles/LC_codes_fullveg_P.csv does not exist

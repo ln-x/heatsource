@@ -1,0 +1,10 @@
+Traceback (most recent call last):
+  File "/usr/local/lib/python2.7/dist-packages/heatsource900/BigRedButton.py", line 225, in RunHS
+    HSP = ModelControl(inputdir, control_file)
+  File "/usr/local/lib/python2.7/dist-packages/heatsource900/BigRedButton.py", line 68, in __init__
+    self.HS = CSVInterface(inputdir, control_file, self.ErrLog, run_type)
+  File "/usr/local/lib/python2.7/dist-packages/heatsource900/CSV/CSVInterface.py", line 62, in __init__
+    self.BuildNodes()
+  File "/usr/local/lib/python2.7/dist-packages/heatsource900/CSV/CSVInterface.py", line 808, in BuildNodes
+    setattr(node,k,v[i+1])# Add one to ignore boundary node
+IndexError: list index out of range

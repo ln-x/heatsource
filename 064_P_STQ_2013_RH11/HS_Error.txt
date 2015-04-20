@@ -1,0 +1,10 @@
+Traceback (most recent call last):
+  File "/usr/local/lib/python2.7/dist-packages/heatsource900/BigRedButton.py", line 225, in RunHS
+    HSP = ModelControl(inputdir, control_file)
+  File "/usr/local/lib/python2.7/dist-packages/heatsource900/BigRedButton.py", line 68, in __init__
+    self.HS = CSVInterface(inputdir, control_file, self.ErrLog, run_type)
+  File "/usr/local/lib/python2.7/dist-packages/heatsource900/CSV/CSVInterface.py", line 66, in __init__
+    self.GetContinuousData()
+  File "/usr/local/lib/python2.7/dist-packages/heatsource900/CSV/CSVInterface.py", line 611, in GetContinuousData
+    "types glorad, wind, humid, air = " % `humid`, type(glorad), type(wind), type(humid), type(air))
+Exception: ("Humidity value of '1.001968' in Continuous Data) must be greater than zero and less than one. types glorad, wind, humid, air = ", <type 'numpy.float64'>, <type 'numpy.float64'>, <type 'numpy.float64'>, <type 'numpy.float64'>)

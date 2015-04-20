@@ -1,0 +1,10 @@
+Traceback (most recent call last):
+  File "/usr/local/lib/python2.7/dist-packages/heatsource900/BigRedButton.py", line 225, in RunHS
+    HSP = ModelControl(inputdir, control_file)
+  File "/usr/local/lib/python2.7/dist-packages/heatsource900/BigRedButton.py", line 68, in __init__
+    self.HS = CSVInterface(inputdir, control_file, self.ErrLog, run_type)
+  File "/usr/local/lib/python2.7/dist-packages/heatsource900/CSV/CSVInterface.py", line 49, in __init__
+    self.ReadControlFile(inputdir, control_file)
+  File "/usr/local/lib/python2.7/dist-packages/heatsource900/CSV/CSVInterface.py", line 126, in ReadControlFile
+    IniParams[k] = float(str.strip(cf.ix[i,2]))
+TypeError: descriptor 'strip' requires a 'str' object but received a 'float'

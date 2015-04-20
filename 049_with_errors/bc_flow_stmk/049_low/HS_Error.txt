@@ -1,0 +1,18 @@
+Traceback (most recent call last):
+  File "/usr/local/lib/python2.7/dist-packages/heatsource900/BigRedButton.py", line 225, in RunHS
+    HSP = ModelControl(inputdir, control_file)
+  File "/usr/local/lib/python2.7/dist-packages/heatsource900/BigRedButton.py", line 68, in __init__
+    self.HS = CSVInterface(inputdir, control_file, self.ErrLog, run_type)
+  File "/usr/local/lib/python2.7/dist-packages/heatsource900/CSV/CSVInterface.py", line 61, in __init__
+    self.GetBoundaryConditions()
+  File "/usr/local/lib/python2.7/dist-packages/heatsource900/CSV/CSVInterface.py", line 377, in GetBoundaryConditions
+    data = pd.read_csv(join(IniParams["inputdir"],IniParams["bcfile"]),quotechar='"',quoting=0, index_col='DateTime')
+  File "/usr/local/lib/python2.7/dist-packages/pandas-0.14.0-py2.7-linux-x86_64.egg/pandas/io/parsers.py", line 443, in parser_f
+    return _read(filepath_or_buffer, kwds)
+  File "/usr/local/lib/python2.7/dist-packages/pandas-0.14.0-py2.7-linux-x86_64.egg/pandas/io/parsers.py", line 235, in _read
+    return parser.read()
+  File "/usr/local/lib/python2.7/dist-packages/pandas-0.14.0-py2.7-linux-x86_64.egg/pandas/io/parsers.py", line 686, in read
+    ret = self._engine.read(nrows)
+  File "/usr/local/lib/python2.7/dist-packages/pandas-0.14.0-py2.7-linux-x86_64.egg/pandas/io/parsers.py", line 1150, in read
+    values = data.pop(self.index_col[i])
+KeyError: 'DateTime'
