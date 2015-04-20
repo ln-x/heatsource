@@ -156,7 +156,7 @@ def GetStreamGeometry(Q_est, W_b, z, n, S, D_est, dx, dt):
     Ww = W_b + 2 * z * D_est
     U = Q_est / A
 
-    # THis is a sheer velocity estimate, followed by an estimate of numerical dispersion
+    # This is a sheer velocity estimate, followed by an estimate of numerical dispersion
     if S == 0.0:
         Shear_Velocity = U
     else:
