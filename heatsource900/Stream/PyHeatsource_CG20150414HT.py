@@ -217,7 +217,7 @@ def CalcFlowsBoku(u, W_w, W_b, S, dx, dt, z, n, D_est, Q, Q_up, Q_up_prev, input
     Geom = GetStreamGeometryBoku(Q_new, W_b, z, n, S, D_est, dx, dt, u)
     return Q_new, Geom
 
-def GetSolarFlux(hour, JD, Altitude, Zenith, glorad, d_w, W_b, Elevation, TopoFactor,
+def GetSolarFlux(hour, JD, Altitude, Zenith, glorad, cloud, d_w, W_b, Elevation, TopoFactor,
                  ViewToSky, SampleDist, phi, emergent, VDensity, VHeight, ShaderList):
     """Old method, now pushed down to a C module. This is left for testing only"""
     FullSunAngle, TopoShadeAngle, BankShadeAngle, rip, veg = ShaderList
@@ -321,7 +321,7 @@ def GetSolarFlux(hour, JD, Altitude, Zenith, glorad, d_w, W_b, Elevation, TopoFa
         exp(-0.0001184 * Elevation)
     Trans_Air = 0.0685 * cos((2 * pi / 365) * (JD + 10)) + 0.8
     #Calculate Diffuse Fraction
-    F_Direct[8] = F_Direct[0] * (Trans_Air ** Air_Mass) * (1 - 0.65 * Cloud ** 2)
+    F_Direct[8] = F_Direct[0] * (Trans_Air ** Air_Mass) * (1 - 0.65 * cloud ** 2)
     if F_Direct[0] == 0:
         Clearness_Index = 1
     else:
@@ -334,7 +334,7 @@ def GetSolarFlux(hour, JD, Altitude, Zenith, glorad, d_w, W_b, Elevation, TopoFa
         (sin(2 * pi * (JD - 40) / 365)) * \
         (0.009 - 0.078 * Clearness_Index)
     F_Direct[8] = Dummy * (1 - Diffuse_Fraction)
-    F_Diffuse[8] = Dummy * (Diffuse_Fraction) * (1 - 0.65 * Cloud ** 2)
+    F_Diffuse[8] = Dummy * (Diffuse_Fraction) * (1 - 0.65 * cloud ** 2)
 
     ########################################################
     #======================================================
@@ -472,9 +472,9 @@ def GetSolarFlux(hour, JD, Altitude, Zenith, glorad, d_w, W_b, Elevation, TopoFa
 #    return cloud, F_Solar, Solar_blocked_byVeg
 
     #print ("Cloud=", Cloud)
-    return Cloud, F_Solar, Solar_blocked_byVeg
+    return cloud, F_Solar, Solar_blocked_byVeg
 
-def GetGroundFluxes(Cloud, Wind, Humidity, T_Air, Elevation, phi, VHeight, ViewToSky, SedDepth, dx,
+def GetGroundFluxes(cloud, Wind, Humidity, T_Air, Elevation, phi, VHeight, ViewToSky, SedDepth, dx,
                     dt, SedThermCond, SedThermDiff, calcalluv, T_alluv, P_w, W_w, emergent, penman, wind_a,
                     wind_b, calcevap, T_prev, T_sed, Q_hyp, F_Solar5, F_Solar7):
     #print ("Cloud=", Cloud)
@@ -513,7 +513,7 @@ def GetGroundFluxes(Cloud, Wind, Humidity, T_Air, Elevation, phi, VHeight, ViewT
     Sat_Vapor = 6.1275 * exp(17.27 * T_Air / (237.3 + T_Air)) #mbar (Chapra p. 567)
     Air_Vapor = Humidity * Sat_Vapor
     Sigma = 5.67e-8 #Stefan-Boltzmann constant (W/m2 K4)
-    Emissivity = 1.72 * (((Air_Vapor * 0.1) / (273.2 + T_Air)) ** (1 / 7)) * (1 + 0.22 * Cloud ** 2) #Dingman p 282
+    Emissivity = 1.72 * (((Air_Vapor * 0.1) / (273.2 + T_Air)) ** (1 / 7)) * (1 + 0.22 * cloud ** 2) #Dingman p 282
     #======================================================
     #Calcualte the atmospheric longwave flux
     F_LW_Atm = 0.96 * ViewToSky * Emissivity * Sigma * (T_Air + 273.2) ** 4
