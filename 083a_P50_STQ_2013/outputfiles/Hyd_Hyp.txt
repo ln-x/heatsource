@@ -1,4 +1,4 @@
-Heat Source 9.0.0b5 hourly output file.  File created on Tue Apr 21 13:21:29 2015
+Heat Source 9.0.0b5 hourly output file.  File created on Tue Apr 21 19:08:26 2015
 083a_P50_STQ_2013
 This is an example of user text.
 

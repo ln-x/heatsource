@@ -1,10 +1,14 @@
 Traceback (most recent call last):
-  File "/usr/local/lib/python2.7/dist-packages/heatsource900/BigRedButton.py", line 225, in RunHS
-    HSP = ModelControl(inputdir, control_file)
-  File "/usr/local/lib/python2.7/dist-packages/heatsource900/BigRedButton.py", line 68, in __init__
-    self.HS = CSVInterface(inputdir, control_file, self.ErrLog, run_type)
-  File "/usr/local/lib/python2.7/dist-packages/heatsource900/CSV/CSVInterface.py", line 62, in __init__
-    self.BuildNodes()
-  File "/usr/local/lib/python2.7/dist-packages/heatsource900/CSV/CSVInterface.py", line 808, in BuildNodes
-    setattr(node,k,v[i+1])# Add one to ignore boundary node
-IndexError: list index out of range
+  File "/usr/local/lib/python2.7/dist-packages/heatsource900/BigRedButton.py", line 226, in RunHS
+    HSP.Run()
+  File "/usr/local/lib/python2.7/dist-packages/heatsource900/BigRedButton.py", line 139, in Run
+    self.run_all(time, hour, minute, second, JD, JDC)
+  File "/usr/local/lib/python2.7/dist-packages/heatsource900/BigRedButton.py", line 205, in run_hs
+    [x.CalcHeat(time, H, M, S, JD, JDC) for x in self.reachlist]
+  File "/usr/local/lib/python2.7/dist-packages/heatsource900/Stream/StreamNode.py", line 344, in CalcHeat_BoundaryNode
+    hour, JD, Daytime, Altitude, Zenith, 0.0, 0.0, solar_only, self.next_km.Mix_T_Delta)
+  File "/usr/local/lib/python2.7/dist-packages/heatsource900/Stream/PyHeatsource.py", line 699, in CalcHeatFluxes
+    VDensity, VHeight, ShaderList)
+  File "/usr/local/lib/python2.7/dist-packages/heatsource900/Stream/PyHeatsource.py", line 305, in GetSolarFlux
+    with open(IniParams["inputdir"] + 'pot_rows.txt', 'r') as f1:
+IOError: [Errno 2] No such file or directory: '/home/lnx/PycharmProjects/HS/048_L500_inklhourlyinflows/inputfiles/pot_rows.txt'
